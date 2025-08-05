@@ -16,11 +16,31 @@ export default function Cadastro() {
     const salt = bcrypt.genSaltSync(10)
     const hashSenha = bcrypt.hashSync(senha, salt)
 
-    const { data, error } = await supabase
+    if (!nome || !cpf || !email || !senha){
+      alert('Nenhum dos campos pode ser vazio')
+      return
+    }
+
+    const { data: professores, error: erroBusca } = await supabase
+      .from('dimProfessores')
+      .select('*')
+
+    if (erroBusca) {
+      setErro(erroBusca.message)
+      return
+    }
+
+    if (professores.length > 0) {
+      alert('Já existe um professor cadastrado. Não é possível adicionar outro.')
+      return
+    }
+
+    const { error } = await supabase
       .from('dimProfessores')
       .insert([
         { nome_prof: nome, cpf_prof: cpf, email_prof: email, senha_prof: hashSenha }
       ])
+  
 
     if (error) {
       setErro(error.message)
