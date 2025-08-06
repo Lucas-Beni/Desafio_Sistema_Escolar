@@ -4,6 +4,7 @@ import Cadastro from './pages/Cadastro'
 import TelaInicial from './pages/TelaInicial'
 import AdicionarTurma from './pages/AdicionarTurma'
 import AdicionarAtividade from './pages/AdicionarAtividade'
+import TelaTurma from './pages/TelaTurma'
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <Route path="/telainicial" element={<TelaInicial />} />
       <Route path="/adicionarturma" element={<AdicionarTurma/>} />
       <Route path="/adicionaratividade" element={<AdicionarAtividade/>} />
+      <Route path="/telaTurma/:id" element={<TelaTurma />} />
     </Routes>
   )
 }

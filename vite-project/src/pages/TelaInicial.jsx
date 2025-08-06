@@ -37,6 +37,10 @@ export default function TelaInicial() {
     }
   }
 
+  const telaTurma = (id) => {
+    navigate(`/telaturma/${id}`)
+  }
+
   const adicionarTurma = () => {
     navigate('/adicionarturma')
   }
@@ -58,11 +62,15 @@ export default function TelaInicial() {
           <p>Nenhuma turma cadastrada.</p>
         ) : (
           turmas.map((turma) => (
-            <div key={turma.id_turma} className="turma-card">
+            <div key={turma.id_turma} className="turma-card" onClick={() => telaTurma(turma.id_turma)}>
               <h3>{turma.nome_turma}</h3>
               <p>ID do Professor: {turma.id_prof}</p>
-              <button onClick={() => deletarTurma(turma.id_turma)}>🗑️</button>
-              {/* Aqui você pode colocar mais informações, botões, etc. */}
+              <button onClick={(e) => {
+                e.stopPropagation()
+                deletarTurma(turma.id_turma)
+              }}>
+                🗑️
+              </button>
             </div>
           ))
         )}
