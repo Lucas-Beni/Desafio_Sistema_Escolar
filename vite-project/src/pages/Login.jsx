@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { supabase } from '../supabase/supabaseClient'
 import { useNavigate } from 'react-router-dom'
 import bcrypt from 'bcryptjs'
+import '../css/Login.css'
 
 export default function Login(){
   const navigate = useNavigate()
@@ -31,7 +32,7 @@ export default function Login(){
   }
 
   return (
-      <div className="container">
+      <div className="container-login">
           <div className='login'>
               <h2>Login</h2>
               <h4>Email</h4>

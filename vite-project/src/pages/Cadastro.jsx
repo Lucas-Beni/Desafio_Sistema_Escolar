@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { supabase } from '../supabase/supabaseClient'
 import { useNavigate } from 'react-router-dom'
 import bcrypt from 'bcryptjs'
+import '../css/Cadastro.css'
 
 export default function Cadastro() {
   const navigate = useNavigate()
@@ -51,7 +52,7 @@ export default function Cadastro() {
   }
 
   return (
-    <div className="container">
+    <div className="container-cadastro">
         <div className='cadastro'>
             <h2>Cadastro</h2>
             <h4>Nome</h4>
