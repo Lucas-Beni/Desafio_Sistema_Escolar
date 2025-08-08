@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { supabase } from '../supabase/supabaseClient'
+import '../css/TelaInicial.css'
 
 export default function TelaInicial() {
   const navigate = useNavigate()
@@ -54,7 +55,7 @@ export default function TelaInicial() {
   }
 
   return (
-    <div>
+    <div className='telainicial-container'>
       <h2>Bem-vindo!</h2>
       <h2>Turmas Cadastradas</h2>
       <div className="turmas-grid">
@@ -74,10 +75,10 @@ export default function TelaInicial() {
             </div>
           ))
         )}
-      </div>  
-      <button onClick={adicionarTurma}>Adicionar Turma</button>
-      <button onClick={adicionarAtividade}>Adicionar Atividade</button>
-      <button onClick={fazerLogout}>Sair</button>
+      </div> 
+      <button id='adicionarTurma' onClick={adicionarTurma}>➕</button>
+      <button id='adicionarAtividade' onClick={adicionarAtividade}>Adicionar Atividade</button>
+      <button id='sair' onClick={fazerLogout}>Sair</button>
     </div>
   )
 }
