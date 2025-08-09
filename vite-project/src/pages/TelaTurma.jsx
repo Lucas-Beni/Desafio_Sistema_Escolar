@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { supabase } from '../supabase/supabaseClient'
+import '../css/TelaTurma.css'
 
 export default function TelaTurma() {
   const { id } = useParams()
@@ -60,26 +61,28 @@ export default function TelaTurma() {
   }
 
   return (
-    <div>
-      <button onClick={() => navigate('/telainicial')}>Voltar</button>
+    <div className='telaturma-container'>
       {turma ? (
         <>
           <h2>{turma.nome_turma}</h2>
           <h3>Atividades</h3>
-          {atividades.length === 0 ? (
-            <p>Nenhuma atividade cadastrada</p>
-            ) : (
-            atividades.map((a) => (
-                <div key={a.id_atividade} className="atividade-card">
-                <h4>{a.dimAtividades.nome_atividade}</h4>
-                <button onClick={() => DeletarAtividade(a.id_atividade)}>🗑️</button>
-                </div>
-            ))
-            )}
+          <div className="tela-turmas-grid">
+            {atividades.length === 0 ? (
+              <p>Nenhuma atividade cadastrada</p>
+              ) : (
+              atividades.map((a) => (
+                  <div key={a.id_atividade} className="atividade-card">
+                  <h4>{a.dimAtividades.nome_atividade}</h4>
+                  <button onClick={() => DeletarAtividade(a.id_atividade)}>🗑️</button>
+                  </div>
+              ))
+              )}  
+            </div>
         </>
       ) : (
         <p>Carregando...</p>
       )}
+      <button id='voltar' onClick={() => navigate('/telainicial')}>Voltar</button>
     </div>
   )
 }

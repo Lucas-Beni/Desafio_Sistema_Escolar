@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { supabase } from '../supabase/supabaseClient'
+import '../css/AdicionarAtividade.css'
 
 export default function AdicionarAtividade(){
     const navigate = useNavigate()
@@ -60,30 +61,33 @@ export default function AdicionarAtividade(){
     }
 
     return (
-        <div className="container">
-        <h4>Nome da Atividade</h4>
-        <input
-            type="text"
-            placeholder="Nome"
-            value={nome}
-            onChange={e => setNome(e.target.value)}
-        />
+        <div className="container-add-atividade">
+            <h2>Adicionar Turma</h2>
+            <div className="add-atividade">
+                <h4>Nome da Atividade</h4>
+                <input
+                    type="text"
+                    placeholder="Nome"
+                    value={nome}
+                    onChange={e => setNome(e.target.value)}
+                />
 
-        <h4>Selecione a Turma</h4>
-        <select
-            value={turmaSelecionada}
-            onChange={e => setTurmaSelecionada(e.target.value)}
-        >
-            <option value="">Selecione uma turma</option>
-            {turmas.map(turma => (
-            <option key={turma.id_turma} value={turma.id_turma}>
-                {turma.nome_turma}
-            </option>
-            ))}
-        </select>
+                <h4>Selecione a Turma</h4>
+                <select
+                    value={turmaSelecionada}
+                    onChange={e => setTurmaSelecionada(e.target.value)}
+                >
+                    <option value="">Selecione uma turma</option>
+                    {turmas.map(turma => (
+                    <option key={turma.id_turma} value={turma.id_turma}>
+                        {turma.nome_turma}
+                    </option>
+                    ))}
+                </select>
 
-        <button onClick={adicionarAtividade}>Adicionar</button>
-        <button onClick={voltar}>Voltar</button>
+                <button onClick={adicionarAtividade}>Adicionar</button>
+                <button id='voltar' onClick={voltar}>Voltar</button>
+            </div>
         </div>
   )
 }
